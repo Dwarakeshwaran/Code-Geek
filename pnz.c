@@ -6,7 +6,7 @@ float number;
     clrscr();
     printf("Enter a number:");
     scanf("%f",number);
-    if{number==0)
+    if(number==0)
     {
         printf("The Number is 0");
     }
