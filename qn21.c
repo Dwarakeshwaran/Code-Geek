@@ -1,7 +1,7 @@
 #include<stdio.h>
 void main()
 {
-int i,size,n[3],a,d,sum=0;
+int i,size,n[size],a,d,sum=0;
 
 printf("Enter the n terms: ");
 scanf("%d",&size);
