@@ -16,11 +16,12 @@ n[0]=a;
 printf("Enter the Difference: ");
 scanf("%d",&d);
 
-for(i=0;i<3;i++)
+for(i=0;i<size;i++)
 {
     n[i+1]=n[i]+d;
-    printf("%d\n",n[i]);
-    
+} 
+for(i=0;i<size;i++)
+{
 
 sum=sum+n[i];
   
