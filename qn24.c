@@ -6,22 +6,19 @@ void main()
 	for(i=0;i<size;i++)
 	{
 		scanf("%d",&n[i]);
-		
+	}
+	for(i=0;i<size;i++)
+	{
 		for(j=i+1;j<size;j++)
 		{
-			if(n[i]<n[j])
+			if(n[i]>n[j])
 			{
-				val=n[i];
+				val=n[j];
 				n[j]=n[i];
-				n[j]=val;
-				
+				n[i]=val;
 			}
-		
 		}
-		
-	}
-	
-`	for(i=0;i<size;i++)
-	printf("%d\n",n[i]);
-	
+		printf("%d\n",n[i]);		
+	}		
 }
+	
