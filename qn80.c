@@ -11,6 +11,6 @@ void main()
 		num=num/10;
 		rem=digit%2;
 		if(rem!=0)
-		printf("%d",digit);
+		printf("%d\t",digit);
 	}
 }
