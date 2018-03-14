@@ -1,16 +1,16 @@
 #include<stdio.h>
 int main()
 {
-int rev=0,t;
+int rev=0,temp;
 char a;
 printf("enter the string:");
 scanf("%s",&a);
-t=a;
-while(t!='\0')
+temp=a;
+while(temp!='\0')
 {
 rev=rev*10;
-rev=rev+t%10;
-t=t/10;
+rev=rev+temp%10;
+temp=temp/10;
 }
 if(a==rev)
 {
