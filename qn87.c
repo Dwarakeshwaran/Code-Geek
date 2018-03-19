@@ -12,10 +12,10 @@ do
 remainder=x%y;
 if(remainder==0)
 break;
-x=y;
-y=remainder;
+num1=num2;
+num2=remainder;
 }while(remainder!=0);
-gcd=y;
+gcd=num2;
 printf("\n GCD: %d",gcd);
 
 }
