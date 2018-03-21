@@ -15,6 +15,6 @@ void main()
 		num1[i]=i;
 		
 		if(num[i]!=num1[i])
-		printf("\n%d",num[i]);
+		printf("\n%d",num1[i]);
 	}
 }
