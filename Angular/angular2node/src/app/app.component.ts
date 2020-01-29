@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular2node';
+
+  click(){
+    console.log("Clicked!");
+  }
+
+  isDisabled = null; 
+
+  showHello(){
+    this.isDisabled = true;
+  }
+  hideHello(){
+    this.isDisabled = false;
+  }
+ 
 }
+ 
