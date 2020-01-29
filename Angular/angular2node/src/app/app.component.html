@@ -4,6 +4,10 @@
 
 <h1 *ngIf = "isDisabled">Hello</h1>
 <button (click) = showHello()>ShowHello</button>
-<button (click) = hideHello()>HideHello</button>
+<button (click) =    hideHello()>HideHello</button>
 
+<input type = "text" value={{flag}}>
+
+
+<app-data [data]="name"></app-data>
 <router-outlet></router-outlet>

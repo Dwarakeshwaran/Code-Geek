@@ -12,6 +12,8 @@ export class AppComponent {
     console.log("Clicked!");
   }
 
+  name = "DwakiRenu";
+
   isDisabled = null; 
 
   showHello(){
@@ -20,6 +22,8 @@ export class AppComponent {
   hideHello(){
     this.isDisabled = false;
   }
+
+  flag = true;
  
 }
  
