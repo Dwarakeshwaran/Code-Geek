@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'app-data',
@@ -7,19 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DataComponent implements OnInit {
 
-  constructor() { }
-
-
-  
+  constructor(private _list: ListService) { 
+  }
+  private animes  = [];
   ngOnInit() {
+    this.animes = this._list.getAnime();
+
   }
   
   @Input("data") name;
   currency = 100;
 
-  animes = [
-    {name: 'Naruto', genre:'Shonen', year:'1999'},
-    {name: 'Gantz', genre:'Seinen', year:'2000'},
-    {name: 'Doremon', genre:'Kodomo', year:'1970'}
-  ];
+  
+  
+
+  
+
+  
 }
