@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
+import { mangaInterface } from "./mangaInterface";
+import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  animes = [];
+  _url:string = "./manga.json";
+  
+  // getManga():Observable<mangaInterface[]>{
 
-  getAnime(){
+  //   return this.http.get<mangaInterface[]>(this._url);
 
-    return this.animes = [
-      {name: 'Naruto', genre:'Shonen', year:'1999'},
-      {name: 'Gantz', genre:'Seinen', year:'2000'},
-      {name: 'Doremon', genre:'Kodomo', year:'1970'}
-    ];
+  // }
 
+  getManga(){
+    return [
+      {"name": "Naruto", "genre":"Shonen", "year":1999},
+      {"name": "Gantz", "genre":"Seinen", "year":2000},
+      {"name": "Doremon", "genre":"Kodomo", "year":1970}
+  ]
   }
 
  

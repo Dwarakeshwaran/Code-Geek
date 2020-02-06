@@ -12,8 +12,8 @@ export class AppComponent {
     console.log("Clicked!");
   }
 
+  
   name = "DwakiRenu";
-
   isDisabled = null; 
 
   showHello(){

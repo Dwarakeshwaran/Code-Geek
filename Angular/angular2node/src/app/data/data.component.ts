@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListService } from '../list.service';
+
 
 @Component({
   selector: 'app-data',
@@ -8,11 +8,11 @@ import { ListService } from '../list.service';
 })
 export class DataComponent implements OnInit {
 
-  constructor(private _list: ListService) { 
+  constructor() { 
   }
-  private animes  = [];
+ 
   ngOnInit() {
-    this.animes = this._list.getAnime();
+    
 
   }
   
@@ -20,9 +20,8 @@ export class DataComponent implements OnInit {
   currency = 100;
 
   
-  
-
-  
-
-  
+  multiple = 0;
+  multiply(any1,any2){
+     this.multiple = any1 * any2;
+  }
 }

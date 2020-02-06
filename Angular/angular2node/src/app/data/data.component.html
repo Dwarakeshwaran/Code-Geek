@@ -3,15 +3,8 @@
 
 <h3>{{ currency | currency : 'INR' }}</h3>
 
-<table>
-    <tr>
-        <th>Anime</th>
-        <th>Genre</th>
-        <th>Year</th>
-    </tr>
-    <tr *ngFor ="let anime of animes">
-        <td>{{anime.name}}</td>
-        <td>{{anime.genre}}</td>
-        <td>{{anime.year}}</td>
-    </tr>
-</table>
+<input #any1 type="text"  placeholder="Enter anything" > <br />
+<input #any2 type="text" placeholder="Enter anything" > <br />
+<button (click) = "multiply(any1.value , any2.value)">Multiply</button>
+
+<h5>{{multiple}}</h5>

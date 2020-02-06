@@ -1,4 +1,4 @@
-
+<p>app works!</p>
 <input type="text" name="Name" placeholder="Enter your name">
 <input type="button" value="Click" (click)="click()">
 
@@ -8,6 +8,10 @@
 
 <input type = "text" value={{flag}}>
 
+<nav>
+    <a routerLink = "/data">Data</a><br />    
+    <a routerLink = "/manga">Manga</a>
+</nav>
 
-<app-data [data]="name"></app-data>
+<!-- <app-data [data] = 'name'></app-data> -->
 <router-outlet></router-outlet>
