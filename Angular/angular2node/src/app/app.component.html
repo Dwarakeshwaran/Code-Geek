@@ -1,17 +1,14 @@
-<p>app works!</p>
-<input type="text" name="Name" placeholder="Enter your name">
-<input type="button" value="Click" (click)="click()">
 
-<h1 *ngIf = "isDisabled">Hello</h1>
-<button (click) = showHello()>ShowHello</button>
-<button (click) =    hideHello()>HideHello</button>
+    
+<div class="app-body">
+    <h2>
+        <nav>
+            <a routerLink = "/data">Data</a><br />    
+            <a routerLink = "/manga">Manga</a><br />
+            <a routerLink = "/surprise">Surprise</a><br />  
+        </nav>
+    </h2>
+    
+</div>    
 
-<input type = "text" value={{flag}}>
-
-<nav>
-    <a routerLink = "/data">Data</a><br />    
-    <a routerLink = "/manga">Manga</a>
-</nav>
-
-<!-- <app-data [data] = 'name'></app-data> -->
 <router-outlet></router-outlet>

@@ -1,10 +1,12 @@
-<p>data works!</p>
-<h1>{{name}}</h1>
+<div class="data-body">
+    <h1>{{name}}</h1>
 
-<h3>{{ currency | currency : 'INR' }}</h3>
+    <h3>{{ currency | currency : 'INR' }}</h3>
 
-<input #any1 type="text"  placeholder="Enter anything" > <br />
-<input #any2 type="text" placeholder="Enter anything" > <br />
-<button (click) = "multiply(any1.value , any2.value)">Multiply</button>
 
-<h5>{{multiple}}</h5>
+    <input #any1 type="text"  placeholder="Enter anything" > <br />
+    <input #any2 type="text" placeholder="Enter anything" > <br />
+    <button (click) = "multiply(any1.value , any2.value)">Multiply</button>
+    
+    <h5>{{multiple}}</h5>    
+</div>

@@ -1,29 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { environment } from '../environments/environment';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular2node';
+public ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+        const bases = this.document.getElementsByTagName('base');
 
-  click(){
-    console.log("Clicked!");
-  }
+        if (bases.length > 0) {
+            bases[0].setAttribute('href', environment.baseHref);
+        }
+    }
+if (!isPlatformBrowser(this.platformId)) {
+    const bases = this.document.getElementsByTagName('base');
 
-  
-  name = "DwakiRenu";
-  isDisabled = null; 
+    if (bases.length > 0) {
+        bases[0].setAttribute('href', environment.baseHref);
+    }
+}}
 
-  showHello(){
-    this.isDisabled = true;
-  }
-  hideHello(){
-    this.isDisabled = false;
-  }
-
-  flag = true;
  
+
+ constructor(@Inject(PLATFORM_ID) private platformId: any, @Inject(DOCUMENT) private document: any) {}
 }
  
