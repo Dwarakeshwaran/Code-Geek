@@ -1,10 +1,10 @@
 package hash_code;
 
 
-import java.util.List;
+//First Step Completed
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Main {
@@ -53,9 +53,8 @@ public class Main {
 			
 			main.scannedLibraries = submissionScanner.nextInt();
 			
-			List<Library> libList = new ArrayList<Library>();
-			
-			
+				    
+			    
 				for(int library = 0 ; library < main.scannedLibraries ; library++)
 				{
 					lib.NoOfBooks = inputScanner.nextInt();
@@ -63,20 +62,16 @@ public class Main {
 					lib.shippingTime = inputScanner.nextInt();
 					
 					lib.books = new int[lib.NoOfBooks];
+					
 					for(int book = 0 ; book < lib.NoOfBooks ; book++)
 					{
 						lib.books[book] = inputScanner.nextInt();
 					}
 					
-					libList.add(lib);
+					lib.collectLibraryDetail(lib);
 					
 				}
-				
-				System.out.println(libList.toString());
-				
-				
-			
-		
+
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
