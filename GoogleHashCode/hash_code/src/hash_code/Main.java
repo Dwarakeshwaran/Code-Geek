@@ -1,7 +1,7 @@
 package hash_code;
 
 
-//First Step Completed
+//First Step Finished
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

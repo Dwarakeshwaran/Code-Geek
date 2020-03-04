@@ -1,6 +1,6 @@
 package hash_code;
 
-
+//First Step Finished
 import java.util.Arrays;
 
 
