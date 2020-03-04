@@ -4,7 +4,8 @@ package hash_code;
 //First Step Completed
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +18,8 @@ public class Main {
 	public int scannedLibraries;
 	public int[] scores;
 	public int[] libraryDetails;
+	private static Scanner inputScanner;
+	private static Scanner submissionScanner;
 	
 	
 	
@@ -25,9 +28,9 @@ public class Main {
 		Main main = new Main();
 		
 		try {
-			Scanner inputScanner = new Scanner(new File("C:/Users/DwarakeshwaranBM/Downloads/Hash Code/a_example.txt"));
-			Scanner submissionScanner = new Scanner(new File("C:/Users/DwarakeshwaranBM/Downloads/Hash Code/submissionFile.txt"));
-			Library lib = new Library();
+			inputScanner = new Scanner(new File("C:/Users/DwarakeshwaranBM/Downloads/Hash Code/a_example.txt"));
+			submissionScanner = new Scanner(new File("C:/Users/DwarakeshwaranBM/Downloads/Hash Code/submissionFile.txt"));
+			List<Library> libList = new ArrayList<Library>();
 			
 			
 			
@@ -57,6 +60,7 @@ public class Main {
 			    
 				for(int library = 0 ; library < main.scannedLibraries ; library++)
 				{
+					Library lib = new Library();
 					lib.NoOfBooks = inputScanner.nextInt();
 					lib.signupTime = inputScanner.nextInt();
 					lib.shippingTime = inputScanner.nextInt();
@@ -68,9 +72,12 @@ public class Main {
 						lib.books[book] = inputScanner.nextInt();
 					}
 					
-					lib.collectLibraryDetail(lib);
+					
+					libList.add(lib);
 					
 				}
+				
+				System.out.println(libList.toString());
 
 		} catch (FileNotFoundException e) {
 			
