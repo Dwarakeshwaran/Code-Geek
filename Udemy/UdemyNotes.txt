@@ -1,0 +1,56 @@
+keybr.com -> fast typing 
+
+
+OMX 306141863 -- USO 31927243; -- UNI in activated status , but EVC 306141941 - Waiting for "DD Event Complete" 
+OMX 306161769 -- USO 32373204; -- UNI in activated status , but EVC 306161778 - Waiting for "DD Event Complete" 
+OMX 306277478 -- USO 36011436; -- UNI in activated status , but EVC 306277480 - Waiting for "DD Event Complete" 
+OMX 306282462 -- USO 34831986; -- UNI in activated status , but EVC 306282537 - Waiting for "DD Event Complete"
+
+
+
+'306141941',
+'306161778',
+'306277480',
+'306282537'
+
+
+IP19124060 - DD needed, no RID
+IP20001668 - no RID
+IP20001653 - no RID
+IP20002095 - DD and RID needed , no port number
+IP20002359 - DD and RID needed , no port number
+IP19128213 - DD needed
+IP20017866 - no port number , DD and RID needed
+IP20000062 - DD and RID needed
+IP20018354 - no RID
+IP20018496 - DD and RID needed
+IP20013685 - no RID
+IP20013716 - no RID 
+IP20013719 - no RID
+
+'IP19124060',
+'IP20001668',
+'IP20001653',
+'IP20002095',
+'IP20002359',
+'IP19128213',
+'IP20017866',
+'IP20000062',
+'IP20018354',
+'IP20018496',
+'IP20013685',
+'IP20013716',
+'IP20013719'
+
+
+
+
+
+
+
+
+Four card feature section
+Single price grid component
+Huddle landing page with alternating feature blocks
+Huddle landing page with a single introductory section
+Fylo landing page with two column layout
