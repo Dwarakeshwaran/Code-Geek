@@ -139,5 +139,27 @@ h3{
   padding: 7% 15%;
   text-align: center;
 
+}
+
+
+/* Call to Action */
+
+#cta{
+  background-color: #ff4c68;
+  padding: 7% 15%;
+  text-align: center;
+  color: white;
+
+
+}
+
+.cta-download-button{
+  margin-top: 50px;
+  padding: 5px 50px;
+}
+
+#footer{
+  padding: 7% 15%;
+  text-align: center;
 
 }
