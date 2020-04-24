@@ -53,7 +53,21 @@ h3{
 .title-image{
   width: 60%;
   transform:rotate(25deg);
+  position: absolute;
 
+}
+
+@media (max-width:1000px) {
+
+  #title{
+    text-align: center;
+  }
+
+  .title-image{
+    padding-top: 50px;
+    transform: rotate(0);
+    position: static;
+  }
 }
 
 .nav-item{
@@ -71,6 +85,8 @@ h3{
   text-align: center;
   padding: 7% 15%;
   background-color: white;
+  position: relative;
+
 }
 
 .feature-box{
@@ -93,7 +109,6 @@ h3{
 
 #testimonials{
   text-align: center;
-
   background-color: #ef8172;
 }
 
