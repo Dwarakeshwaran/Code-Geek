@@ -1,0 +1,9 @@
+package com.spring.restful;
+
+public class Anime {
+	
+	public String name;
+	public String genre;
+	public int rating;
+
+}

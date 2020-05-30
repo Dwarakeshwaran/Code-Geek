@@ -1,0 +1,16 @@
+package com.spring.restful;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AnimeService {
+	
+	public static List<Anime> animeList = new ArrayList<Anime>();
+	
+	static {
+		animeList.add(null);
+	}
+	
+	
+
+}
