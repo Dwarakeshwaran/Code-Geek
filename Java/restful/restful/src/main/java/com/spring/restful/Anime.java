@@ -46,7 +46,5 @@ public class Anime {
 		return "Anime [name=" + name + ", genre=" + genre + ", rating=" + rating + "]";
 	}
 	
-	
-	
 
 }
