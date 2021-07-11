@@ -1,73 +1,61 @@
 package dwarki.google.kickstart.a2020;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class HouseVaanguvom {
+
+class HouseVaanguvom{
 	
-	public static Integer[] sortTheArray(Integer[] array) {
+	static int countHouses(List<Integer> list, Integer limit) {
 		
-		int temp;
-		
-		for(int i=0 ; i<array.length ; i++) {
-			for(int j=i+1 ; j<array.length ; j++) {
-				if(array[i] > array[j]) {
-					temp = array[j];
-					array[j] = array[i];
-					array[i] = temp;
-				}
-			}
-		}
-		
-		
-		return array;
-		
-	}
-	
-	public static int countHouses(Integer[] array, int limit) {
-		
-		int count = 0;
+		int count = -1;
 		int sum = 0;
 		
-		for(int i=0 ; i<array.length ; i++) {
+		for(int i=0 ; i<list.size() ; i++) {
 			if(sum <= limit) {
 				count++;
-				sum = sum + array[i];
+				sum = sum + list.get(i);
 			}
+			else 
+				break;
 		}
 		
-		return count-1;
+		return count;
 	}
 	
-	public static void main(String[] args) {
+	public static int main(String[] args) {
 		
 		
-		@SuppressWarnings("resource")
+		
 		Scanner scan = new Scanner(System.in);
+		
 		
 		Integer numberOfHouses = scan.nextInt();
 		Integer budget = scan.nextInt();
 		
-		Integer[] amountList = new Integer[numberOfHouses];
+		List<Integer> amountList = new ArrayList<Integer>();
 		
 		for(int i=0 ; i<numberOfHouses ; i++)
-			amountList[i] = scan.nextInt();
+			amountList.add(scan.nextInt());
 		
-//		System.out.println(numberOfHouses + " " + budget + " ");
-//		
-//		for(int i=0 ; i<numberOfHouses ; i++)
-//			System.out.print(amountList[i]);
+		/*Sorting Using Anonymous Inner Class
+		 * 
+		 * amountList.sort(new Comparator<Integer>() { public int compare(Integer o1,
+		 * Integer o2) {
+		 * 
+		 * return o1.compareTo(o2); } });
+		 */
+		
+		amountList.sort((data1, data2) -> data1.compareTo(data2));
+		
+		int buyHouses = HouseVaanguvom.countHouses(amountList, budget);
+		
+		scan.close();
+		
+		return buyHouses;
 		
 		
-		Integer[] sortedArray = new Integer[numberOfHouses];
-		
-		sortedArray = sortTheArray(amountList);
-		
-//		for(int i=0 ; i<numberOfHouses ; i++)
-//			System.out.print(sortedArray[i] + " ");
-		
-		int buyHouses = countHouses(sortedArray, budget); 
-		
-		System.out.println(buyHouses);
 	}
 
 }
