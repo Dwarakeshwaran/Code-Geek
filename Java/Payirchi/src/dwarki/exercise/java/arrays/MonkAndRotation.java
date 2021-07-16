@@ -14,7 +14,7 @@ public class MonkAndRotation {
 			//I didn't rotate the loop rotation number of times
 			//Instead I have changed the position of it by using the rotation count
 			Integer rotatedIndex = (i + rotation) % array.length;
-
+			
 			rotatedArray[rotatedIndex] = array[i];
 
 		}
@@ -29,16 +29,24 @@ public class MonkAndRotation {
 		Scanner scan = new Scanner(System.in);
 
 		Integer testCases = scan.nextInt();
-		Integer numberCount = scan.nextInt();
-		Integer rotationCount = scan.nextInt();
+		Integer numberCount;
+		Integer rotationCount;
 
-		Integer[] numberList = new Integer[numberCount];
-
-		for (int i = 0; i < numberCount; i++)
-			numberList[i] = scan.nextInt();
-
-		for (int i = 0; i < testCases; i++)
+		for (int iteration = 0; iteration < testCases; iteration++) {
+			
+			numberCount = scan.nextInt();
+			rotationCount = scan.nextInt();
+			
+			Integer[] numberList = new Integer[numberCount];
+			
+			for (int i = 0; i < numberCount; i++)
+				numberList[i] = scan.nextInt();
+			
 			rotateList(numberList, rotationCount);
+			
+			System.out.println(" ");
+		}
+			
 
 		scan.close();
 
