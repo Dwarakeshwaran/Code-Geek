@@ -49,7 +49,7 @@ class HouseVaanguvom{
 		
 		amountList.sort((data1, data2) -> data1.compareTo(data2));
 		
-		int buyHouses = HouseVaanguvom.countHouses(amountList, budget);
+		int buyHouses =countHouses(amountList, budget);
 		
 		scan.close();
 		
