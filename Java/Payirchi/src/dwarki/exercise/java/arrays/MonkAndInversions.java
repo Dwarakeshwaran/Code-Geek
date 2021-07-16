@@ -42,6 +42,8 @@ public class MonkAndInversions {
 								inversionSatisficationCount++;
 			
 			list.add(inversionSatisficationCount);
+			
+			inversionSatisficationCount = 0;
 		}
 		for(Integer number: list)
 			System.out.println(number);
