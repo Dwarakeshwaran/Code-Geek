@@ -1,54 +1,58 @@
 package dwarki.exercise.java.arrays;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 //17:10 15-07-2021
 public class MonkAndRotation {
 
-	public static void rotateList(Integer[] array, Integer rotation) {
+	public static void rotateList(int[] array, Integer rotation) {
 
-		Integer[] rotatedArray = new Integer[array.length];
+
+		int rotationConstant = array.length-(rotation%array.length);
 
 		for (int i = 0; i < array.length; i++) {
 
-			//I didn't rotate the loop rotation number of times
-			//Instead I have changed the position of it by using the rotation count
-			Integer rotatedIndex = (i + rotation) % array.length;
+			// getting the constant value of array Size and the rotation count
+			// rotating the index of the array using the flag
+			// getting the rotatedIndex
+			Integer rotatedIndex = (i+rotationConstant) % array.length;
+
+			StringBuffer rotatedValue = new StringBuffer();
+
+			System.out.print(rotatedValue.append(array[rotatedIndex] + " ").toString());
 			
-			rotatedArray[rotatedIndex] = array[i];
-
 		}
-
-		for (int i = 0; i < array.length; i++)
-			System.out.print(rotatedArray[i] + " ");
+		System.out.println("");
 
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 
-		Scanner scan = new Scanner(System.in);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-		Integer testCases = scan.nextInt();
+
+		Integer testCases = Integer.parseInt(reader.readLine());
 		Integer numberCount;
-		Integer rotationCount;
-
+		int rotationCount;
+		
+		
 		for (int iteration = 0; iteration < testCases; iteration++) {
 			
-			numberCount = scan.nextInt();
-			rotationCount = scan.nextInt();
+			String temp[] = reader.readLine().split(" ");
 			
-			Integer[] numberList = new Integer[numberCount];
+			numberCount = Integer.parseInt(temp[0]);
+			rotationCount = Integer.parseInt(temp[1]);
 			
-			for (int i = 0; i < numberCount; i++)
-				numberList[i] = scan.nextInt();
+			int[] numberList = new int[numberCount];
+			
+			numberList = Arrays.stream(reader.readLine().trim().split(" ")).mapToInt(Integer::parseInt).toArray();
 			
 			rotateList(numberList, rotationCount);
-			
-			System.out.println(" ");
+
 		}
 			
-
-		scan.close();
 
 	}
 
