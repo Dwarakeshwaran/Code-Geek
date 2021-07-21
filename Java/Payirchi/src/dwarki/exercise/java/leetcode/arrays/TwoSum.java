@@ -1,4 +1,4 @@
-package dwarki.exercise.java.leetcode;
+package dwarki.exercise.java.leetcode.arrays;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
