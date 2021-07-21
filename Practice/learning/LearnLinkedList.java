@@ -20,97 +20,124 @@ class ListNode {
 		this.nextNode = node;
 	}
 
+	/*
+	 * public void add(int number) {
+	 * 
+	 * //This will cause "The left-hand side of an assignment must be a variable"
+	 * error when we try this inside a node class. while (this.nextNode != null)
+	 * this = this.nextNode; this.nextNode = new ListNode(number); }
+	 */
+
+	public void add(int number) {
+
+		ListNode duplicateNode = this;
+
+		if (this == null)
+			duplicateNode = new ListNode(number);
+
+		while (duplicateNode.nextNode != null)
+			duplicateNode = duplicateNode.nextNode;
+		duplicateNode.nextNode = new ListNode(number);
+	}
+
 }
 
 class MyLinkedList {
 
-	ListNode node = new ListNode();
+	ListNode headNode;
 
 	public MyLinkedList() {
 		super();
 	}
 
 	public MyLinkedList(ListNode node) {
-		this.node = node;
+		this.headNode = node;
 	}
 
 	public void add(int number) {
 
-		ListNode head = node;
+		ListNode duplicateNode = headNode;
 
-		while (head.nextNode != null)
-			head = head.nextNode;
-		head.nextNode = new ListNode(number);
+		if (headNode == null) {
+			headNode = new ListNode(number);
+		}
+		else
+		{
+			while (duplicateNode.nextNode != null)
+				duplicateNode = duplicateNode.nextNode;
+			duplicateNode.nextNode = new ListNode(number);
+		}
+		
 	}
 
 	public void print() {
 
-		ListNode head = node;
-
-		while (head.nextNode != null) {
-			System.out.println(head.data);
-			head = head.nextNode;
+		ListNode duplicateNode = headNode;
+		
+		while (duplicateNode.nextNode != null) {
+			System.out.println(duplicateNode.data);
+			duplicateNode = duplicateNode.nextNode;
 		}
-		System.out.println(head.data);
+		System.out.println(duplicateNode.data);
 	}
 
 	public void delete(int number) {
 
-		ListNode head = node;
+		ListNode duplicateNode = headNode;
 
-		while (head.nextNode != null) {
+		while (duplicateNode.nextNode != null) {
 
-			if (head.nextNode.data == number) {
-				head.nextNode = head.nextNode.nextNode;
+			if (duplicateNode.nextNode.data == number) {
+				duplicateNode.nextNode = duplicateNode.nextNode.nextNode;
 				break;
 			}
-			head = head.nextNode;
+			duplicateNode = duplicateNode.nextNode;
 		}
 	}
 
 	public void update(int position, int number) {
 
-		ListNode head = node;
+		ListNode duplicateNode = headNode;
 		int count = 1;
 
-		while (head.nextNode != null) {
+		while (duplicateNode.nextNode != null) {
 
 			if (count == position) {
-				head.data = number;
+				duplicateNode.data = number;
 			}
 			count++;
-			head = head.nextNode;
+			duplicateNode = duplicateNode.nextNode;
 		}
 
 	}
-	
+
 	public void add(int position, int number) {
-		
-		ListNode head = node;
+
+		ListNode duplicateNode = headNode;
 		int count = 0;
-		
-		while(head.nextNode!=null) {
-			
-			if(++count == position-1) {
+
+		while (duplicateNode.nextNode != null) {
+
+			if (++count == position - 1) {
 				ListNode node = new ListNode(number);
-				node.nextNode = head.nextNode;
-				head.nextNode = node;
+				node.nextNode = duplicateNode.nextNode;
+				duplicateNode.nextNode = node;
 				break;
 			}
-			head = head.nextNode;
+			duplicateNode = duplicateNode.nextNode;
 		}
 	}
-	
+
 	public void size() {
-		
-		ListNode head = node;
+
+		ListNode duplicateNode = headNode;
 		int count = 0;
-		
-		while(head.nextNode!=null) {
+
+		while (duplicateNode.nextNode != null) {
 			count++;
-			head = head.nextNode;
+			duplicateNode = duplicateNode.nextNode;
 		}
-		System.out.println("Size: " + (count+1));
+		System.out.println("Size: " + (count + 1));
 	}
 }
 
@@ -120,7 +147,7 @@ public class LearnLinkedList {
 
 		ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3, null)));
 		ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4, null)));
-		
+
 		new MyLinkedList(l2).print();
 
 		MyLinkedList l3 = new MyLinkedList(l1);
@@ -129,9 +156,9 @@ public class LearnLinkedList {
 		l3.add(11);
 		l3.delete(11);
 		l3.update(2, 5);
-		
+
 		MyLinkedList l4 = new MyLinkedList(new ListNode(1));
-		
+
 		l4.add(2);
 		l4.add(4);
 		l4.add(5);
@@ -139,6 +166,23 @@ public class LearnLinkedList {
 		l3.size();
 		l3.print();
 
+		ListNode l5 = new ListNode();
+
+		System.out.println("-------------------");
+		l5.add(15);
+		l5.add(16);
+		l5.add(17);
+
+		MyLinkedList list = new MyLinkedList(l5);
+		list.print();
+
+		System.out.println("-------------------");
+		MyLinkedList list2 = new MyLinkedList();
+
+		list2.add(25);
+		list2.add(35);
+		list2.add(45);
+		list2.print();
 	}
 
 }
