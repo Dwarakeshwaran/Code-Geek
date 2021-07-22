@@ -2,6 +2,7 @@ package dwarki.exercise.java.leetcode.linkedlist;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.util.Arrays;
 
 //Started @14:06 21-07-2021
@@ -70,21 +71,24 @@ class LinkedList {
 		System.out.println(" ");
 	}
 
-	public void delete(int number) {
+	public void deleteLastNode() {
 
 		ListNode duplicateNode = headNode;
-
-		if (headNode.val == number) {
-			headNode = headNode.next;
+		
+		if(headNode.next == null)
+		{
+			headNode = null;
 			return;
 		}
+			
+			
+		while (true) {
 
-		while (duplicateNode.next != null) {
-			if (duplicateNode.next.val == number) {
-				duplicateNode.next = duplicateNode.next.next;
-				break;// If we don't use this break, then the head=head.nextNode will assign null to
-						// head
-			} // and that will throw NullPointerException
+			if (duplicateNode.next.next == null) {
+				duplicateNode.next = null;
+				return;
+			}
+			
 			duplicateNode = duplicateNode.next;
 		}
 
@@ -99,7 +103,7 @@ class LinkedList {
 		ListNode duplicateNode = headNode;
 
 		if (headNode == null)
-			return 0;
+			return -1;
 
 		while (duplicateNode.next != null) {
 			duplicateNode = duplicateNode.next;
@@ -108,26 +112,31 @@ class LinkedList {
 		return duplicateNode.val;
 	}
 
+	public int size() {
+
+		ListNode duplicateNode = headNode;
+
+		int count = 0;
+
+		while (duplicateNode.next != null) {
+			count++;
+			duplicateNode = duplicateNode.next;
+		}
+
+		return (count + 1);
+	}
+
 }
 
 public class AddTwoNumbers {
 
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		
-		if((l1.val == 0) && (l2.val == 0))
-			return new ListNode(0);
-		
-		if((l1.val == 0) || (l2.val == 0)){
-			if(l1.val == 0)
-				return l2;
-			else if(l2.val == 0)
-				return l1;
-		}
 
 		String reversedNode1 = nodeReversal(new LinkedList(l1));
-		String reversedNode2 = nodeReversal(new LinkedList(l2));
 
-		Integer sum = Integer.parseInt(reversedNode1) + Integer.parseInt(reversedNode2);
+		String reversedNode2 = nodeReversal(new LinkedList(l2));
+		
+		BigInteger sum = new BigInteger(reversedNode1).add(new BigInteger(reversedNode2));
 
 		LinkedList solutionNodeList = new LinkedList();
 
@@ -136,8 +145,8 @@ public class AddTwoNumbers {
 			char c = sum.toString().charAt(i);
 			solutionNodeList.add(Integer.parseInt(String.valueOf(c)));
 		}
-		
-		solutionNodeList.print();
+
+		//solutionNodeList.print();
 
 		return solutionNodeList.getNode();
 
@@ -148,20 +157,16 @@ public class AddTwoNumbers {
 		LinkedList checkNodeList = new LinkedList(list.getNode());
 
 		int endNodeData;
+		int count = list.size();
 
 		StringBuffer reversedString = new StringBuffer();
 
-		while (checkNodeList != null) {
+		while (count != 0) {
 			endNodeData = checkNodeList.goToEnd();
+			reversedString.append(endNodeData);
+			checkNodeList.deleteLastNode();
 
-			if (endNodeData != 0)
-				reversedString.append(endNodeData);
-
-			if (endNodeData == 0)
-				break;
-			else
-				checkNodeList.delete(endNodeData);
-
+			count--;
 		}
 		return reversedString.toString();
 	}
@@ -181,7 +186,6 @@ public class AddTwoNumbers {
 
 		for (int i = 0; i < listArray2.length; i++)
 			list2.add(listArray2[i]);
-			
 
 		addTwoNumbers(list1.getNode(), list2.getNode());
 
