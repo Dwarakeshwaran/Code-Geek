@@ -129,5 +129,114 @@ public class RemoveNthNodeFromEndOfList {
 		removeNthFromEnd(list, position);
 
 	}
+	
 
 }
+
+/* LEETCODE SOLUTION
+ 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+/*
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        
+        MyLinkedList list = new MyLinkedList(head);
+        
+        int position = (list.size() - n) + 1;
+
+		list.removeAtPosition(position);
+
+		return list.getNode();
+        
+    }
+}
+
+class MyLinkedList {
+
+	ListNode headNode;
+
+	public MyLinkedList() {
+		super();
+	}
+
+	public MyLinkedList(ListNode headNode) {
+		super();
+		this.headNode = headNode;
+	}
+
+	public void add(int number) {
+
+		ListNode duplicateNode = headNode;
+
+		if (headNode == null)
+			headNode = new ListNode(number);
+		else {
+			while (duplicateNode.next != null)
+				duplicateNode = duplicateNode.next;
+			duplicateNode.next = new ListNode(number);
+		}
+
+	}
+
+	public void print() {
+
+		ListNode duplicateNode = headNode;
+
+		while (duplicateNode != null) {
+			System.out.print(duplicateNode.val + " ");
+			duplicateNode = duplicateNode.next;
+		}
+	}
+
+	public void removeAtPosition(int position) {
+
+		ListNode duplicateNode = headNode;
+
+		int count = 1;
+
+		if (count == position) {//This is for deleting the first Element
+			headNode = headNode.next;
+			return;
+		}
+
+		while (duplicateNode.next != null) {
+			if ((count + 1) == position) {
+				duplicateNode.next = duplicateNode.next.next;
+			}
+			if (count == position - 1)// This is for deleting the last element
+				return;// so that we can avoid the NullPointerException
+			else
+				duplicateNode = duplicateNode.next;
+			count++;
+		}
+
+	}
+
+	public int size() {
+
+		ListNode duplicateNode = headNode;
+		int counter = 0;
+
+		while (duplicateNode != null) {
+			duplicateNode = duplicateNode.next;
+			counter++;
+		}
+		return counter;
+	}
+    
+    public ListNode getNode(){
+        return headNode;
+    }
+}
+
+
+*/
