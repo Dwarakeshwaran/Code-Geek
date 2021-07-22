@@ -8,8 +8,8 @@ import java.util.Arrays;
 //Ended @16:10 21-07-2021
 class ListNode {
 
-	int data;
-	ListNode nextNode;
+	int val;
+	ListNode next;
 
 	public ListNode() {
 		super();
@@ -17,62 +17,95 @@ class ListNode {
 
 	public ListNode(int data) {
 		super();
-		this.data = data;
+		this.val = data;
 	}
 
 	public ListNode(int data, ListNode node) {
 		super();
-		this.data = data;
-		this.nextNode = node;
+		this.val = data;
+		this.next = node;
+	}
+
+}
+
+class LinkedList {
+
+	ListNode headNode;
+
+	public LinkedList() {
+		super();
+	}
+
+	public LinkedList(ListNode headNode) {
+		super();
+		this.headNode = headNode;
 	}
 
 	public void add(int number) {
 
-		ListNode head = this;
+		ListNode duplicateNode = headNode;
 
-		while (head.nextNode != null)
-			head = head.nextNode;
-		head.nextNode = new ListNode(number);
+		if (headNode == null)
+			headNode = new ListNode(number);
+		else {
+			while (duplicateNode.next != null)
+				duplicateNode = duplicateNode.next;
+			duplicateNode.next = new ListNode(number);
+		}
+
 	}
 
 	public void print() {
 
-		ListNode head = this;
-			
-		while (head.nextNode != null) {
-			System.out.print(head.data + " ");
-			head = head.nextNode;
+		ListNode duplicateNode = headNode;
+
+		if (headNode == null)
+			return;
+
+		while (duplicateNode.next != null) {
+			System.out.print(duplicateNode.val + " ");
+			duplicateNode = duplicateNode.next;
 		}
-		System.out.print(head.data);
+		System.out.print(duplicateNode.val);
 		System.out.println(" ");
 	}
 
 	public void delete(int number) {
 
-		ListNode head = this;
+		ListNode duplicateNode = headNode;
 
-		while (head.nextNode != null) {
-			if (head.nextNode.data == number) {
-				head.nextNode = head.nextNode.nextNode;
+		if (headNode.val == number) {
+			headNode = headNode.next;
+			return;
+		}
+
+		while (duplicateNode.next != null) {
+			if (duplicateNode.next.val == number) {
+				duplicateNode.next = duplicateNode.next.next;
 				break;// If we don't use this break, then the head=head.nextNode will assign null to
 						// head
 			} // and that will throw NullPointerException
-			head = head.nextNode;
+			duplicateNode = duplicateNode.next;
 		}
 
 	}
 
-	public int size() {
-		ListNode head = this;
+	public ListNode getNode() {
+		return headNode;
+	}
 
-		int count = 0;
+	public int goToEnd() {
 
-		while (head.nextNode != null) {
-			head = head.nextNode;
-			count++;
+		ListNode duplicateNode = headNode;
+
+		if (headNode == null)
+			return 0;
+
+		while (duplicateNode.next != null) {
+			duplicateNode = duplicateNode.next;
 		}
 
-		return (count + 1);
+		return duplicateNode.val;
 	}
 
 }
@@ -80,66 +113,56 @@ class ListNode {
 public class AddTwoNumbers {
 
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		
+		if((l1.val == 0) && (l2.val == 0))
+			return new ListNode(0);
+		
+		if((l1.val == 0) || (l2.val == 0)){
+			if(l1.val == 0)
+				return l2;
+			else if(l2.val == 0)
+				return l1;
+		}
 
-		String reversedNode1 = nodeReversal(l1);
-		String reversedNode2 = nodeReversal(l2);
+		String reversedNode1 = nodeReversal(new LinkedList(l1));
+		String reversedNode2 = nodeReversal(new LinkedList(l2));
 
 		Integer sum = Integer.parseInt(reversedNode1) + Integer.parseInt(reversedNode2);
 
-		char lastDigit = sum.toString().charAt(sum.toString().length() - 1);
+		LinkedList solutionNodeList = new LinkedList();
 
-		ListNode solutionNode = new ListNode(Integer.parseInt(String.valueOf(lastDigit)));
+		for (int i = sum.toString().length() - 1; i >= 0; i--) {
 
-		// sum.toString().length() - 2 -> this is to ignore the lastDigit as we already
-		// added it to ListNode.
-		for (int i = sum.toString().length() - 2; i >= 0; i--) {
 			char c = sum.toString().charAt(i);
-
-			solutionNode.add(Integer.parseInt(String.valueOf(c)));
+			solutionNodeList.add(Integer.parseInt(String.valueOf(c)));
 		}
+		
+		solutionNodeList.print();
 
-		return solutionNode;
+		return solutionNodeList.getNode();
 
 	}
 
-	public static String nodeReversal(ListNode node) {
+	public static String nodeReversal(LinkedList list) {
 
-		ListNode duplicateNode = node;
+		LinkedList checkNodeList = new LinkedList(list.getNode());
 
-		ListNode checkNode = node;
-
-		ListNode endNode;
+		int endNodeData;
 
 		StringBuffer reversedString = new StringBuffer();
 
-		while (checkNode.size() > 1) {
-			while (checkNode.nextNode != null) {
-				checkNode = checkNode.nextNode;
-			}
-			/* Getting the last Node by traversing the copied Node(checkNode) to the last */
-			endNode = checkNode;
-			/*
-			 * Since we want reverse value, we get the value from the endNote and appending
-			 * it in an immutable string variable.
-			 */
-			reversedString.append(endNode.data);
-			/*
-			 * Deleting the the last Node from the Duplicate Node and saving it to checkNode
-			 */
-			duplicateNode.delete(endNode.data);
-			/*
-			 * Now this will perform the check again and will get the value of last before
-			 * node. (which is now deleted)
-			 */
-			checkNode = duplicateNode;
+		while (checkNodeList != null) {
+			endNodeData = checkNodeList.goToEnd();
+
+			if (endNodeData != 0)
+				reversedString.append(endNodeData);
+
+			if (endNodeData == 0)
+				break;
+			else
+				checkNodeList.delete(endNodeData);
+
 		}
-
-		reversedString.append(checkNode.data);
-
-		// System.out.println(reversedString);
-
-		// checkNode.print();
-
 		return reversedString.toString();
 	}
 
@@ -150,20 +173,17 @@ public class AddTwoNumbers {
 		int[] listArray1 = Arrays.stream(reader.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
 		int[] listArray2 = Arrays.stream(reader.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
 
-		ListNode l1 = new ListNode(listArray1[0]);
-		ListNode l2 = new ListNode(listArray2[0]);
+		LinkedList list1 = new LinkedList();
+		LinkedList list2 = new LinkedList();
 
-		for (int i = 1; i < listArray1.length; i++)
-			l1.add(listArray1[i]);
+		for (int i = 0; i < listArray1.length; i++)
+			list1.add(listArray1[i]);
 
-		for (int i = 1; i < listArray2.length; i++)
-			l2.add(listArray2[i]);
+		for (int i = 0; i < listArray2.length; i++)
+			list2.add(listArray2[i]);
+			
 
-		/*
-		 * l1.print(); l2.print();
-		 */
-
-		addTwoNumbers(l1, l2).print();
+		addTwoNumbers(list1.getNode(), list2.getNode());
 
 	}
 
