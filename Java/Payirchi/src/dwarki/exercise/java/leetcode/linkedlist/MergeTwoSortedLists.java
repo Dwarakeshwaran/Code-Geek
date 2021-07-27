@@ -16,8 +16,8 @@ public class MergeTwoSortedLists {
 		int[] intArray1 = Arrays.stream(reader.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
 		int[] intArray2 = Arrays.stream(reader.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
 
-		LinkedList list1 = new LinkedList();
-		LinkedList list2 = new LinkedList();
+		MyLinkedList list1 = new MyLinkedList();
+		MyLinkedList list2 = new MyLinkedList();
 
 		for (int i : intArray1)
 			list1.add(i);
@@ -29,14 +29,14 @@ public class MergeTwoSortedLists {
 
 	}
 
-	public static Node mergeTwoLists(Node l1, Node l2) {
+	public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
-		LinkedList mergedList = new LinkedList();
+		MyLinkedList mergedList = new MyLinkedList();
 
 		mergedList.addNode(l1);
 		mergedList.addNode(l2);
 
-		LinkedList sortedList = new LinkedList();
+		MyLinkedList sortedList = new MyLinkedList();
 
 		sortedList = sortList(mergedList);
 
@@ -44,12 +44,12 @@ public class MergeTwoSortedLists {
 
 	}
 
-	public static LinkedList sortList(LinkedList list) {
+	public static MyLinkedList sortList(MyLinkedList list) {
 
 		int minimumNumber;
 		int count = list.size();
 
-		LinkedList resultantList = new LinkedList();
+		MyLinkedList resultantList = new MyLinkedList();
 
 		while (count != resultantList.size()) {
 
@@ -65,155 +65,4 @@ public class MergeTwoSortedLists {
 
 }
 
-class Node {
-	int val;
-	Node next;
 
-	public Node() {
-		super();
-	}
-
-	public Node(int val) {
-		super();
-		this.val = val;
-	}
-	
-	public Node(int val, Node next) {
-		super();
-		this.val = val;
-		this.next = next;
-	}
-
-}
-
-class LinkedList {
-
-	Node headNode;
-
-	public LinkedList() {
-		super();
-	}
-
-	public LinkedList(Node head) {
-		super();
-		this.headNode = head;
-	}
-
-	public void add(int data) {
-
-		Node tempNode = headNode;
-
-		if (headNode == null) {
-			headNode = new Node(data);
-			return;
-		}
-
-		while (tempNode.next != null) {
-			tempNode = tempNode.next;
-		}
-		tempNode.next = new Node(data);
-
-	}
-
-	public void show() {
-
-		Node tempNode = headNode;
-
-		if (headNode == null)
-			return;
-		else {
-			while (tempNode.next != null) {
-				System.out.print(tempNode.val + " ");
-				tempNode = tempNode.next;
-			}
-			System.out.println(tempNode.val);
-		}
-
-	}
-
-	public Node getNode() {
-		return headNode;
-	}
-
-	public void addNode(Node newNode) {
-
-		Node tempNode = headNode;
-
-		if (headNode == null) {
-			headNode = newNode;
-			return;
-		}
-
-		while (tempNode.next != null) {
-			tempNode = tempNode.next;
-		}
-		tempNode.next = newNode;
-
-	}
-
-	public int getMinimum() {
-
-		Node tempNode = headNode;
-
-		if (headNode == null)
-			return 0;
-
-		int minimum = headNode.val;
-
-		while (tempNode.next != null) {
-			if (tempNode.val <= minimum)
-				minimum = tempNode.val;
-			tempNode = tempNode.next;
-		}
-
-		if (tempNode.val <= minimum)
-			minimum = tempNode.val;
-
-		return minimum;
-	}
-
-	public void remove(int number) {
-		Node tempNode = headNode;
-
-		if (headNode.val == number) {
-			headNode = headNode.next;
-			return;
-		}
-
-		while (tempNode.next != null) {
-
-			/*
-			 * This is to delete the last node; we can't able to perform tempNode.next =
-			 * tempNode.next.next because we can able to fetch tempNode.next.next and it
-			 * will NullPointerException
-			 */
-			if (tempNode.next.val == number && tempNode.next.next == null) {
-				tempNode.next = null;
-				return;
-			}
-
-			if (tempNode.next.val == number) {
-				tempNode.next = tempNode.next.next;
-				return;
-			}
-
-			tempNode = tempNode.next;
-
-		}
-	}
-
-	public int size() {
-
-		Node tempNode = headNode;
-
-		int count = 0;
-
-		while (tempNode != null) {
-			count++;
-			tempNode = tempNode.next;
-		}
-
-		return count;
-	}
-
-}
