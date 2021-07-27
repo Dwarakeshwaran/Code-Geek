@@ -17,13 +17,14 @@ class MyLinkedList {
 
 		ListNode tempNode = headNode;
 
-		if (headNode == null)
+		if (headNode == null) {
 			headNode = new ListNode(number);
-		else {
-			while (tempNode.next != null)
-				tempNode = tempNode.next;
-			tempNode.next = new ListNode(number);
+			return;
 		}
+
+		while (tempNode.next != null)
+			tempNode = tempNode.next;
+		tempNode.next = new ListNode(number);
 
 	}
 
@@ -33,33 +34,34 @@ class MyLinkedList {
 
 		if (headNode == null)
 			return;
-
-		while (tempNode.next != null) {
-			System.out.print(tempNode.val + " ");
-			tempNode = tempNode.next;
+		else {
+			while (tempNode.next != null) {
+				System.out.print(tempNode.val + " ");
+				tempNode = tempNode.next;
 		}
-		System.out.print(tempNode.val);
-		System.out.println(" ");
+			System.out.print(tempNode.val);
+			System.out.println(" ");
+		
+		}
+		
 	}
 
 	public void deleteLastNode() {
 
 		ListNode tempNode = headNode;
-		
-		if(headNode.next == null)
-		{
+
+		if (headNode.next == null) {
 			headNode = null;
 			return;
 		}
-			
-			
+
 		while (true) {
 
 			if (tempNode.next.next == null) {
 				tempNode.next = null;
 				return;
 			}
-			
+
 			tempNode = tempNode.next;
 		}
 
@@ -89,21 +91,21 @@ class MyLinkedList {
 
 		int count = 0;
 
-		while (tempNode.next != null) {
+		while (tempNode != null) {
 			count++;
 			tempNode = tempNode.next;
 		}
 
-		return (count + 1);
+		return count;
 	}
-	
+
 	public void removeAtPosition(int position) {
 
 		ListNode tempNode = headNode;
 
 		int count = 1;
 
-		if (count == position) {//This is for deleting the first Element
+		if (count == position) {// This is for deleting the first Element
 			headNode = headNode.next;
 			return;
 		}
@@ -121,5 +123,71 @@ class MyLinkedList {
 
 	}
 
-}
+	public void addNode(ListNode newNode) {
 
+		ListNode tempNode = headNode;
+
+		if (headNode == null) {
+			headNode = newNode;
+			return;
+		}
+
+		while (tempNode.next != null) {
+			tempNode = tempNode.next;
+		}
+		tempNode.next = newNode;
+
+	}
+
+	public int getMinimum() {
+
+		ListNode tempNode = headNode;
+
+		if (headNode == null)
+			return 0;
+
+		int minimum = headNode.val;
+
+		while (tempNode.next != null) {
+			if (tempNode.val <= minimum)
+				minimum = tempNode.val;
+			tempNode = tempNode.next;
+		}
+
+		if (tempNode.val <= minimum)
+			minimum = tempNode.val;
+
+		return minimum;
+	}
+
+	public void remove(int number) {
+		ListNode tempNode = headNode;
+
+		if (headNode.val == number) {
+			headNode = headNode.next;
+			return;
+		}
+
+		while (tempNode.next != null) {
+
+			/*
+			 * This is to delete the last node; we can't able to perform tempNode.next =
+			 * tempNode.next.next because we can able to fetch tempNode.next.next and it
+			 * will NullPointerException
+			 */
+			if (tempNode.next.val == number && tempNode.next.next == null) {
+				tempNode.next = null;
+				return;
+			}
+
+			if (tempNode.next.val == number) {
+				tempNode.next = tempNode.next.next;
+				return;
+			}
+
+			tempNode = tempNode.next;
+
+		}
+	}
+
+}
