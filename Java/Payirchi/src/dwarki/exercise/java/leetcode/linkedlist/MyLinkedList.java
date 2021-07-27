@@ -38,12 +38,12 @@ class MyLinkedList {
 			while (tempNode.next != null) {
 				System.out.print(tempNode.val + " ");
 				tempNode = tempNode.next;
-		}
+			}
 			System.out.print(tempNode.val);
 			System.out.println(" ");
-		
+
 		}
-		
+
 	}
 
 	public void deleteLastNode() {
@@ -188,6 +188,35 @@ class MyLinkedList {
 			tempNode = tempNode.next;
 
 		}
+	}
+
+	public ListNode swapAdjacentNodesInPairs() {
+
+		ListNode tempNode = headNode;
+
+		if (headNode == null)
+			return null;
+		else if (headNode.next == null)
+			return headNode;
+		else if (tempNode.next != null) {
+
+			while (tempNode.next != null) {
+
+				int temp = tempNode.val;
+				tempNode.val = tempNode.next.val;
+				tempNode.next.val = temp;
+
+				tempNode = tempNode.next;
+
+				if (tempNode.next == null)
+					return tempNode;
+				else
+					tempNode = tempNode.next;
+			}
+
+			return tempNode;
+		} else
+			return null;
 	}
 
 }
