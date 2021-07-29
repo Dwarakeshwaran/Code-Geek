@@ -17,7 +17,7 @@ public class ReverseNodesInKGroup {
 
 		int limitPosition = Integer.parseInt(reader.readLine());
 
-		TempLinkedList list = new TempLinkedList();
+		MyLinkedList list = new MyLinkedList();
 
 		for (int i : intArray)
 			list.add(i);
@@ -28,7 +28,7 @@ public class ReverseNodesInKGroup {
 
 	public static ListNode reverseGroup(ListNode head, int k) {
 
-		TempLinkedList list = new TempLinkedList(head);
+		MyLinkedList list = new MyLinkedList(head);
 
 		int jumpPoint = 0;
 
@@ -99,78 +99,4 @@ public class ReverseNodesInKGroup {
 
 		return (count + 1);
 	}
-}
-
-class TempLinkedList {
-
-	ListNode headNode;
-
-	public TempLinkedList() {
-		super();
-	}
-
-	public TempLinkedList(ListNode headNode) {
-		super();
-		this.headNode = headNode;
-	}
-
-	public void add(int number) {
-
-		ListNode tempNode = headNode;
-
-		if (headNode == null) {
-			headNode = new ListNode(number);
-			return;
-		}
-
-		while (tempNode.next != null)
-			tempNode = tempNode.next;
-		tempNode.next = new ListNode(number);
-
-	}
-
-	public void show() {
-
-		ListNode tempNode = headNode;
-
-		if (headNode == null)
-			return;
-
-		while (tempNode.next != null) {
-			System.out.print(tempNode.val + " ");
-			tempNode = tempNode.next;
-		}
-
-		System.out.println(tempNode.val);
-	}
-
-	public ListNode getNode() {
-		return headNode;
-	}
-
-	public ListNode getJumpedHead(int jumpPoint) {
-
-		ListNode tempNode = headNode;
-
-		int count = 0;
-
-		if (headNode == null)
-			return null;
-
-		while (count < jumpPoint) {
-
-			if (tempNode.next == null)
-				return tempNode;
-
-			tempNode = tempNode.next;
-			count++;
-		}
-
-		if (count == jumpPoint)
-			return tempNode;
-		else
-			return null;
-
-	}
-
 }
