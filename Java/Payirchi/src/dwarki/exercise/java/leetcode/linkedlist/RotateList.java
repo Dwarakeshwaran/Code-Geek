@@ -16,103 +16,50 @@ public class RotateList {
 
 		int shift = Integer.parseInt(reader.readLine());
 
-		MyTempLinkedList list = new MyTempLinkedList();
+		MyLinkedList list = new MyLinkedList();
 
 		for (int i : intArray)
 			list.add(i);
 
-		rotateRight(list.getNode(), shift);
+		new MyLinkedList(rotateRight(list.getNode(), shift)).show();
 
 	}
 
 	public static ListNode rotateRight(ListNode head, int k) {
 
-		MyTempLinkedList list = new MyTempLinkedList(head);
-
 		ListNode lastNode;
-		
-		if(head == null)
+
+		if (head == null)
 			return null;
 
 		if (head.next == null)
 			return head;
-		
-		k = k%list.size(head);
+
+		k = k % size(head);
 
 		for (int i = 0; i < k; i++) {
 
-			lastNode = list.getLastHead();
+			lastNode = getLastNode(head);
 
-			list.removeLastNode();
+			removeLastNode(head);
 
-			list.prepend(lastNode);
+			head = prepend(lastNode, head);
 
 		}
 
-		list.show();
-
-		return list.getNode();
+		return head;
 
 	}
 
-}
+	public static ListNode getLastNode(ListNode head) {
 
-class MyTempLinkedList {
+		ListNode tempNode = head;
 
-	ListNode headNode;
-
-	public MyTempLinkedList() {
-		super();
-	}
-
-	public MyTempLinkedList(ListNode headNode) {
-		super();
-		this.headNode = headNode;
-	}
-
-	public void add(int number) {
-
-		ListNode tempNode = headNode;
-
-		if (headNode == null) {
-			headNode = new ListNode(number);
-			return;
-		}
-
-		while (tempNode.next != null)
-			tempNode = tempNode.next;
-		tempNode.next = new ListNode(number);
-
-	}
-
-	public void show() {
-
-		ListNode tempNode = headNode;
-
-		if (headNode == null)
-			return;
-
-		while (tempNode.next != null) {
-			System.out.print(tempNode.val + " ");
-			tempNode = tempNode.next;
-		}
-
-		System.out.println(tempNode.val);
-	}
-
-	public ListNode getNode() {
-		return headNode;
-	}
-
-	public ListNode getLastHead() {
-
-		ListNode tempNode = headNode;
-
-		if (headNode == null)
+		if (head == null)
 			return null;
 
-		if (headNode.next == null)
-			return headNode;
+		if (head.next == null)
+			return head;
 
 		while (tempNode.next != null)
 			tempNode = tempNode.next;
@@ -120,12 +67,12 @@ class MyTempLinkedList {
 		return tempNode;
 	}
 
-	public void removeLastNode() {
+	public static void removeLastNode(ListNode head) {
 
-		ListNode tempNode = headNode;
+		ListNode tempNode = head;
 
-		if (headNode.next == null) {
-			headNode = null;
+		if (head.next == null) {
+			head = null;
 			return;
 		}
 
@@ -141,17 +88,19 @@ class MyTempLinkedList {
 		}
 	}
 
-	public void prepend(ListNode node) {
+	public static ListNode prepend(ListNode node, ListNode head) {
 
-		ListNode tempNode = headNode;
+		ListNode tempNode = head;
 
-		headNode = node;
+		head = node;
 
-		headNode.next = tempNode;
+		head.next = tempNode;
+
+		return head;
 
 	}
-	
-	public int size(ListNode headNode) {
+
+	public static int size(ListNode headNode) {
 
 		ListNode tempNode = headNode;
 
@@ -171,3 +120,144 @@ class MyTempLinkedList {
 		return (count + 1);
 	}
 }
+
+/*
+ * PREVIOUS VERSION OF USING A SEPARATE TEMPORARY LINKED LIST CLASS FOR DEFINING
+ * METHODS package dwarki.exercise.java.leetcode.linkedlist;
+ * 
+ * import java.io.BufferedReader; import java.io.IOException; import
+ * java.io.InputStreamReader; import java.util.Arrays;
+ * 
+ * //Started @18:43 28-07-2021 //Ended @19:20 28-07-2021 public class RotateList
+ * {
+ * 
+ * public static void main(String[] args) throws IOException { BufferedReader
+ * reader = new BufferedReader(new InputStreamReader(System.in));
+ * 
+ * int[] intArray =
+ * Arrays.stream(reader.readLine().split(",")).mapToInt(Integer::parseInt).
+ * toArray();
+ * 
+ * int shift = Integer.parseInt(reader.readLine());
+ * 
+ * MyTempLinkedList list = new MyTempLinkedList();
+ * 
+ * for (int i : intArray) list.add(i);
+ * 
+ * rotateRight(list.getNode(), shift);
+ * 
+ * }
+ * 
+ * public static ListNode rotateRight(ListNode head, int k) {
+ * 
+ * MyTempLinkedList list = new MyTempLinkedList(head);
+ * 
+ * ListNode lastNode;
+ * 
+ * if(head == null) return null;
+ * 
+ * if (head.next == null) return head;
+ * 
+ * k = k%list.size(head);
+ * 
+ * for (int i = 0; i < k; i++) {
+ * 
+ * lastNode = list.getLastHead();
+ * 
+ * list.removeLastNode();
+ * 
+ * list.prepend(lastNode);
+ * 
+ * }
+ * 
+ * list.show();
+ * 
+ * return list.getNode();
+ * 
+ * }
+ * 
+ * }
+ * 
+ * class MyTempLinkedList {
+ * 
+ * ListNode headNode;
+ * 
+ * public MyTempLinkedList() { super(); }
+ * 
+ * public MyTempLinkedList(ListNode headNode) { super(); this.headNode =
+ * headNode; }
+ * 
+ * public void add(int number) {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * if (headNode == null) { headNode = new ListNode(number); return; }
+ * 
+ * while (tempNode.next != null) tempNode = tempNode.next; tempNode.next = new
+ * ListNode(number);
+ * 
+ * }
+ * 
+ * public void show() {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * if (headNode == null) return;
+ * 
+ * while (tempNode.next != null) { System.out.print(tempNode.val + " ");
+ * tempNode = tempNode.next; }
+ * 
+ * System.out.println(tempNode.val); }
+ * 
+ * public ListNode getNode() { return headNode; }
+ * 
+ * public ListNode getLastHead() {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * if (headNode == null) return null;
+ * 
+ * if (headNode.next == null) return headNode;
+ * 
+ * while (tempNode.next != null) tempNode = tempNode.next;
+ * 
+ * return tempNode; }
+ * 
+ * public void removeLastNode() {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * if (headNode.next == null) { headNode = null; return; }
+ * 
+ * while (tempNode.next != null) {
+ * 
+ * if (tempNode.next.next == null) { tempNode.next = null; return; }
+ * 
+ * tempNode = tempNode.next;
+ * 
+ * } }
+ * 
+ * public void prepend(ListNode node) {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * headNode = node;
+ * 
+ * headNode.next = tempNode;
+ * 
+ * }
+ * 
+ * public int size(ListNode headNode) {
+ * 
+ * ListNode tempNode = headNode;
+ * 
+ * int count = 0;
+ * 
+ * if (headNode == null) return 0;
+ * 
+ * if (headNode.next == null) return 1;
+ * 
+ * while (tempNode.next != null) { count++; tempNode = tempNode.next; }
+ * 
+ * return (count + 1); } }
+ */
