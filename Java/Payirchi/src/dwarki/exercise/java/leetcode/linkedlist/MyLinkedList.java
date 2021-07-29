@@ -218,5 +218,30 @@ class MyLinkedList {
 		} else
 			return null;
 	}
+	
+	public ListNode getJumpedHead(int jumpPoint) {
+
+		ListNode tempNode = headNode;
+
+		int count = 0;
+
+		if (headNode == null)
+			return null;
+
+		while (count < jumpPoint) {
+
+			if (tempNode.next == null)
+				return tempNode;
+
+			tempNode = tempNode.next;
+			count++;
+		}
+
+		if (count == jumpPoint)
+			return tempNode;
+		else
+			return null;
+
+	}
 
 }
