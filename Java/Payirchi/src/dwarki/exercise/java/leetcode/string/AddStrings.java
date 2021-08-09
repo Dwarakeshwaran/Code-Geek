@@ -19,20 +19,23 @@ public class AddStrings {
 
 	public static String addStrings(String num1, String num2) {
 
-		Integer sum = stringToInteger(num1) + stringToInteger(num2);
+		Long sum = stringToInteger(num1) + stringToInteger(num2);
 
 		System.out.println(sum.toString());
 		
 		//6913259244, 71103343
+		
+		//3876620623801494171, 6529364523802684779
+		
 
 		return sum.toString();
 	}
 
-	public static int stringToInteger(String str) {
+	public static long stringToInteger(String str) {
 
-		int digit;
+		long digit;
 
-		int result = 0;
+		long result = 0;
 
 		for (int i = 0; i < str.length(); i++) {
 
@@ -47,9 +50,9 @@ public class AddStrings {
 		return result;
 	}
 
-	private static int powerOfTen(int number) {
+	private static long powerOfTen(long number) {
 
-		int power = 1;
+		long power = 1;
 
 		for (int i = 0; i < number; i++)
 			power = power * 10;
