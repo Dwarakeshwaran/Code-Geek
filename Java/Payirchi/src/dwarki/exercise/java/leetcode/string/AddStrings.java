@@ -3,7 +3,6 @@ package dwarki.exercise.java.leetcode.string;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 
 public class AddStrings {
 
@@ -20,48 +19,85 @@ public class AddStrings {
 
 	public static String addStrings(String num1, String num2) {
 
-		BigInteger sum = stringToInteger(num1).add(stringToInteger(num2));
+		String greater;
+		String lesser;
 
-		System.out.println(sum.toString());
-		
-		//6913259244, 71103343
-		
-		//3876620623801494171, 6529364523802684779
-	
-		return sum.toString();
-	}
+		if (num1.length() > num2.length()) {
+			greater = num1;
+			lesser = num2;
+		} else {
+			greater = num2;
+			lesser = num1;
+		}
 
-	public static BigInteger stringToInteger(String str) {
+		Integer sumOfDigits, greaterDigit, lesserDigit, flag = 0;
 
-		Integer digit;
-		
-		BigInteger powerDigit;
+		String reverseSum = "";
 
-		BigInteger result = new BigInteger("0");
+		for (int i = 0; i < greater.length(); i++) {
 
-		for (int i = 0; i < str.length(); i++) {
-			
-			digit = (int) str.charAt(i) - 48;
-			
-			powerDigit = new BigInteger(digit.toString());
+			sumOfDigits = 0;
 
-			powerDigit = powerDigit.multiply(powerOfTen(str.length() - (i + 1)));
+			greaterDigit = greater.charAt(greater.length() - (i + 1)) - 48;
 
-			result = result.add(powerDigit) ;
+			if (i < lesser.length()) {
+
+				lesserDigit = lesser.charAt(lesser.length() - (i + 1)) - 48;
+				sumOfDigits = greaterDigit + lesserDigit;
+
+				if (flag == 1)
+					sumOfDigits = sumOfDigits + 1;
+
+				if (sumOfDigits <= 9) {
+					reverseSum = reverseSum.concat(sumOfDigits.toString());
+					flag = 0;
+				} else {
+					sumOfDigits = sumOfDigits % 10;
+					reverseSum = reverseSum.concat(sumOfDigits.toString());
+					flag = 1;
+				}
+
+				if (flag == 1 && i == greater.length() - 1)
+					reverseSum = reverseSum.concat("1");
+
+			} else {
+
+				sumOfDigits = sumOfDigits + greaterDigit;
+
+				if (flag == 1)
+					sumOfDigits = sumOfDigits + 1;
+
+				if (sumOfDigits < 9) {
+					reverseSum = reverseSum.concat(sumOfDigits.toString());
+					flag = 0;
+				} else {
+					sumOfDigits = sumOfDigits % 10;
+					reverseSum = reverseSum.concat(sumOfDigits.toString());
+					flag = 1;
+				}
+
+				if (flag == 1 && i == greater.length() - 1)
+					reverseSum = reverseSum.concat("1");
+			}
 
 		}
 
-		return result;
+		String resultantSum = reverse(reverseSum);
+
+		System.out.println(resultantSum);
+
+		return resultantSum;
 	}
 
-	private static BigInteger powerOfTen(long number) {
+	private static String reverse(String reverseSum) {
 
-		BigInteger power = new BigInteger("1");
+		String result = "";
 
-		for (int i = 0; i < number; i++)
-			power = power.multiply(new BigInteger("10"));
+		for (int i = reverseSum.length() - 1; i >= 0; i--) {
+			result = result.concat(String.valueOf(reverseSum.charAt(i)));
+		}
 
-		return power;
+		return result;
 	}
 
 }
