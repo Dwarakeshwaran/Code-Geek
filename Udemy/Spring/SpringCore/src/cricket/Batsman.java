@@ -6,6 +6,8 @@ public class Batsman {
 	private int runs;
 	private double average;
 
+	private Team team;
+
 	public Batsman() {
 		super();
 	}
@@ -43,8 +45,22 @@ public class Batsman {
 		this.average = average;
 	}
 
-	public String display() {
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public String displayBatsmanInfo() {
 		return "Batsman [batsmanName=" + batsmanName + ", runs=" + runs + ", average=" + average + "]";
+	}
+
+	public void getTeamInfo() {
+
+		System.out.println(this.batsmanName + "'s team is " + team.getCountry() + " which is ranked at No."
+				+ team.getRank() + " Position");
 	}
 
 }

@@ -5,6 +5,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="batsmanTeamObject" class="cricket.Team">
+
+		<property name="country" value="India" />
+		<property name="rank" value="1" />
+
+	</bean>
+
+	<bean id="bowlerTeamObject" class="cricket.Team">
+
+		<property name="country" value="South Africa" />
+		<property name="rank" value="3" />
+
+	</bean>
+
+
 
 	<bean id="batsman" class="cricket.Batsman">
 
@@ -15,6 +30,22 @@
 		<property name="batsmanName" value="Dhoni" />
 		<property name="runs" value="16000" />
 		<property name="average" value="99.9" />
+		<property name="team" ref="batsmanTeamObject" />
+
+
+	</bean>
+
+
+	<bean id="bowler" class="cricket.Bowler">
+
+		<constructor-arg name="bowlerName" value="none" />
+		<constructor-arg name="wickets" value="0" />
+		<constructor-arg name="average" value="0.0" />
+
+		<property name="bowlerName" value="Steyn" />
+		<property name="wickets" value="750" />
+		<property name="average" value="20.75" />
+		<property name="team" ref="bowlerTeamObject" />
 
 	</bean>
 
