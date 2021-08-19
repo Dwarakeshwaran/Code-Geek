@@ -3,10 +3,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans.xsd">
-   
-   
-   <bean id="batsman" class="cricket.Batsman" ></bean>
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="batsman" class="cricket.Batsman">
+
+		<constructor-arg name="batsmanName" value="none" />
+		<constructor-arg name="runs" value="0" />
+		<constructor-arg name="average" value="0.0" />
+
+		<property name="batsmanName" value="Dhoni" />
+		<property name="runs" value="16000" />
+		<property name="average" value="99.9" />
+
+	</bean>
 
 
 </beans>
