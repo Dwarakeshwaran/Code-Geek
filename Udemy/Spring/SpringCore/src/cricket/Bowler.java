@@ -1,11 +1,16 @@
 package cricket;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Bowler {
 
 	private String bowlerName;
 	private int wickets;
 	private double average;
 
+	@Autowired
+	@Qualifier("bowlerTeamObject")
 	private Team team;
 
 	public Bowler(String bowlerName, int wickets, double average) {
@@ -39,22 +44,14 @@ public class Bowler {
 		this.average = average;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-
 	public String displayBowlerInfo() {
 		return "Bowler [bowlerName=" + bowlerName + ", wickets=" + wickets + ", average=" + average + "]";
 	}
 
 	public void getTeamInfo() {
 
-		System.out.println(this.bowlerName + "'s team is " + team.getCountry() + " which is ranked at No." + team.getRank()
-				+ " Position");
+		System.out.println(this.bowlerName + "'s team is " + team.getCountry() + " which is ranked at No."
+				+ team.getRank() + " Position");
 	}
 
 }

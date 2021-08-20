@@ -1,11 +1,16 @@
 package cricket;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Batsman {
 
 	private String batsmanName;
 	private int runs;
 	private double average;
 
+	@Autowired
+	@Qualifier("batsmanTeamObject")
 	private Team team;
 
 	public Batsman() {
@@ -43,14 +48,6 @@ public class Batsman {
 
 	public void setAverage(double average) {
 		this.average = average;
-	}
-
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
 	}
 
 	public String displayBatsmanInfo() {

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="cricket" />
 
 	<bean id="batsmanTeamObject" class="cricket.Team">
 
@@ -30,7 +34,6 @@
 		<property name="batsmanName" value="Dhoni" />
 		<property name="runs" value="16000" />
 		<property name="average" value="99.9" />
-		<property name="team" ref="batsmanTeamObject" />
 
 
 	</bean>
@@ -45,7 +48,6 @@
 		<property name="bowlerName" value="Steyn" />
 		<property name="wickets" value="750" />
 		<property name="average" value="20.75" />
-		<property name="team" ref="bowlerTeamObject" />
 
 	</bean>
 
