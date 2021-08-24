@@ -1,0 +1,32 @@
+package menu.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import menu.data.BreakfastService;
+import menu.model.Breakfast;
+
+@Controller
+public class BreakfastController {
+
+	@Autowired
+	private BreakfastService service;
+
+	@RequestMapping("/breakfast/{item}")
+	@ResponseBody
+	public String getOneItemInfo(@PathVariable String item) {
+
+		for (Breakfast i : service.getBreakfastItems()) {
+
+			if (i.getItemName().toLowerCase().equals(item.toLowerCase()))
+				return "The Breakfast Item is " + i.getItemName() + " and it's price is " + i.getPrice();
+
+		}
+
+		return "No Breakfast Items Found";
+	}
+
+}
