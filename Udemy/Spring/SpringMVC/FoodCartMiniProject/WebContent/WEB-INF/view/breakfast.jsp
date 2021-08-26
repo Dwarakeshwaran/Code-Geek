@@ -40,16 +40,21 @@
 
 		<br />
 
-		<form action="breakfast/checkout">
+		<form action="breakfast/cart">
 
 			<label for="food">Food: </label> <input name="foodName" id="food"
-				type="text" placeholder="Enter the food item...">
-			<button>Add to Cart</button><br />
-			<br /> <input type="submit" value="Buy Now">
+				type="text" placeholder="Enter the food item..."> <label
+				for="quantity">Qty:</label> <input name="numberOfItems" size="2"
+				type="text" id="quantity"> <input type="submit"
+				value="Add to Cart">
 
-		</form><br />
+		</form>
+		<br />
 
-		<a href="/FoodCart">Back</a>
+		<form action="breakfast/checkout">
+			<input type="submit" value="Buy Now">
+		</form>
+		<br /> <a href="/FoodCart">Back</a>
 
 	</div>
 

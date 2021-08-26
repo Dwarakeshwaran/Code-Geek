@@ -1,5 +1,11 @@
 package menu.controller;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,23 +22,67 @@ public class BreakfastController {
 	private BreakfastService service;
 
 	@RequestMapping("/breakfast/checkout")
-	public String getOneItemInfo(@RequestParam String foodName, Model model) {
+	public String getOneItemInfo(Model model) throws ClassNotFoundException, SQLException {
 
-		Integer numberOfItems = 1;
+		HashMap<String, Integer> orderedItems = new HashMap<String, Integer>();
+
+		orderedItems = service.getDataFromDB();
+
+		List<String> foodList = new ArrayList<String>();
+		List<Integer> quantityList = new ArrayList<Integer>();
+
+		for (Map.Entry<String, Integer> entry : orderedItems.entrySet()) {
+
+			foodList.add(entry.getKey());
+			quantityList.add(entry.getValue());
+		}
+
+		Double sum = 0.0;
+
+		for (int i = 0; i < foodList.size(); i++) {
+
+			for (Breakfast j : service.getBreakfastItems()) {
+
+				if (foodList.get(i).toLowerCase().equals(j.getItemName().toLowerCase())) {
+
+					Double price = quantityList.get(i) * j.getPrice();
+
+					sum = sum + price;
+				}
+			}
+
+		}
+
+		model.addAttribute("food", foodList);
+		model.addAttribute("quantity", quantityList);
+		model.addAttribute("size", ((Integer) foodList.size()).toString());
+		model.addAttribute("sum", sum.toString());
+
+		return "checkout";
+	}
+
+	@RequestMapping("/breakfast/cart")
+	public String addItemsToCart(@RequestParam String foodName, String numberOfItems, Model model)
+			throws ClassNotFoundException, SQLException {
 
 		for (Breakfast i : service.getBreakfastItems()) {
 
 			if (foodName.toLowerCase().equals(i.getItemName().toLowerCase())) {
 
-				model.addAttribute("foodObject", i);
-				model.addAttribute("totalItems", numberOfItems.toString());
+				service.insertFoodItemToDB(foodName, numberOfItems);
 
-				return "checkout";
+				model.addAttribute("message", numberOfItems + " " + foodName + "'s are added to Cart");
+
+				return "cart";
+
+			} else {
+
+				model.addAttribute("message", "No Items Found");
 
 			}
 		}
 
-		return "checkout";
+		return "cart";
 	}
 
 	@RequestMapping("/breakfast")
