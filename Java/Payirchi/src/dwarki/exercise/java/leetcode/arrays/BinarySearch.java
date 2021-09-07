@@ -25,33 +25,21 @@ public class BinarySearch {
 		int left = 0;
 		int right = nums.length - 1;
 
-		int place = binarySearch(nums, left, right, target);
+		while (left <= right) {
 
-		System.out.println(target + " exists in nums and its index is " + position);
-		return place;
+			int middle = (left + right) / 2;
 
-	}
+			if (target == nums[middle])
+				return middle;
+			else if (target < nums[middle])
+				right = middle - 1;
+			else if (target > nums[middle])
+				left = middle + 1;
 
-	private static int binarySearch(int[] nums, int left, int right, int target) {
+			System.out.println(left + "--" + right);
 
-		int middle = (left + right) / 2;
-
-		if (target < nums[middle])
-			binarySearch(nums, left, middle - 1, target);
-		else if (target > nums[middle])
-			binarySearch(nums, middle + 1, right, target);
-		else if (target == nums[left])
-			position = left;
-		else if (target == nums[right])
-			position = right;
-		else if (target == nums[middle])
-			position = middle;
-
-		if (middle == 0)
-			return -1;
-		else
-			return position;
+		}
+		return -1;
 
 	}
-
 }
