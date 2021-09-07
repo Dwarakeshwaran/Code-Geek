@@ -9,8 +9,6 @@ public class Batsman {
 	private int runs;
 	private double average;
 
-	@Autowired
-	@Qualifier("batsmanTeamObject")
 	private Team team;
 
 	public Batsman() {

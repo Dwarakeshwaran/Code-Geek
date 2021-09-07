@@ -26,7 +26,11 @@ public class BreakfastController {
 
 		HashMap<String, Integer> orderedItems = new HashMap<String, Integer>();
 
-		orderedItems = service.getDataFromDB();
+		try {
+			orderedItems = service.getDataFromDB();
+		} catch (SQLException e) {
+			return "checkout";
+		}
 
 		List<String> foodList = new ArrayList<String>();
 		List<Integer> quantityList = new ArrayList<Integer>();
@@ -48,15 +52,17 @@ public class BreakfastController {
 					Double price = quantityList.get(i) * j.getPrice();
 
 					sum = sum + price;
+
 				}
 			}
-
 		}
 
 		model.addAttribute("food", foodList);
 		model.addAttribute("quantity", quantityList);
 		model.addAttribute("size", ((Integer) foodList.size()).toString());
 		model.addAttribute("sum", sum.toString());
+
+		service.deleteTable();
 
 		return "checkout";
 	}
@@ -70,6 +76,8 @@ public class BreakfastController {
 			if (foodName.toLowerCase().equals(i.getItemName().toLowerCase())) {
 
 				service.insertFoodItemToDB(foodName, numberOfItems);
+
+				model.addAttribute("breakfast", 1);
 
 				model.addAttribute("message", numberOfItems + " " + foodName + "'s are added to Cart");
 

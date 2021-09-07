@@ -9,8 +9,6 @@ public class Bowler {
 	private int wickets;
 	private double average;
 
-	@Autowired
-	@Qualifier("bowlerTeamObject")
 	private Team team;
 
 	public Bowler(String bowlerName, int wickets, double average) {

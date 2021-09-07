@@ -25,7 +25,7 @@
 
 
 
-	<bean id="batsman" class="cricket.Batsman">
+	<bean id="batsman" class="cricket.Batsman" autowire="byType">
 
 		<constructor-arg name="batsmanName" value="none" />
 		<constructor-arg name="runs" value="0" />
@@ -39,7 +39,7 @@
 	</bean>
 
 
-	<bean id="bowler" class="cricket.Bowler">
+	<bean id="bowler" class="cricket.Bowler" autowire="byType">
 
 		<constructor-arg name="bowlerName" value="none" />
 		<constructor-arg name="wickets" value="0" />

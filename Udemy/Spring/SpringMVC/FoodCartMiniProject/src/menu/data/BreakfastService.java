@@ -48,8 +48,8 @@ public class BreakfastService {
 
 		Connection connection = EstablishConnection();
 
-		String createTable = "create table if not exists food (foodName varchar(255), numberOfItems integer )";
-		String insertData = "insert into food (foodName, numberOfItems) values (?,?)";
+		String createTable = "create table if not exists breakfast (foodName varchar(255), numberOfItems integer )";
+		String insertData = "insert into breakfast (foodName, numberOfItems) values (?,?)";
 
 		PreparedStatement stmt = connection.prepareStatement(createTable);
 
@@ -70,7 +70,7 @@ public class BreakfastService {
 
 		Connection connection = EstablishConnection();
 
-		String sql = "select * from food;";
+		String sql = "select * from breakfast";
 
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 
@@ -106,7 +106,7 @@ public class BreakfastService {
 
 		Statement statement = connection.createStatement();
 
-		String sql = "drop table food";
+		String sql = "drop table breakfast";
 
 		statement.execute(sql);
 
