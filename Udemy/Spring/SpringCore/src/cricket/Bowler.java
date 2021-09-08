@@ -1,21 +1,29 @@
 package cricket;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 public class Bowler {
 
 	private String bowlerName;
 	private int wickets;
 	private double average;
 
-	private Team team;
+	private Team bowlerTeam;
 
-	public Bowler(String bowlerName, int wickets, double average) {
+	public Bowler(String bowlerName, int wickets, double average, Team bowlerTeam) {
 		super();
 		this.bowlerName = bowlerName;
 		this.wickets = wickets;
 		this.average = average;
+		this.bowlerTeam = bowlerTeam;
+
+		System.out.println("Bowler [bowlerName=" + bowlerName + ", wickets=" + wickets + ", average=" + average + "]");
+	}
+
+	public Team getTeam() {
+		return bowlerTeam;
+	}
+
+	public void setTeam(Team bowlerTeam) {
+		this.bowlerTeam = bowlerTeam;
 	}
 
 	public String getBowlerName() {
@@ -48,8 +56,8 @@ public class Bowler {
 
 	public void getTeamInfo() {
 
-		System.out.println(this.bowlerName + "'s team is " + team.getCountry() + " which is ranked at No."
-				+ team.getRank() + " Position");
+		System.out.println(this.bowlerName + "'s team is " + bowlerTeam.getCountry() + " which is ranked at No."
+				+ bowlerTeam.getRank() + " Position");
 	}
 
 }

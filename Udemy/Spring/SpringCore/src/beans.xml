@@ -9,14 +9,14 @@
 
 	<context:component-scan base-package="cricket" />
 
-	<bean id="batsmanTeamObject" class="cricket.Team">
+	<bean id="batsmanTeam" class="cricket.Team">
 
 		<property name="country" value="India" />
 		<property name="rank" value="1" />
 
 	</bean>
 
-	<bean id="bowlerTeamObject" class="cricket.Team">
+	<bean id="bowlerTeam" class="cricket.Team">
 
 		<property name="country" value="South Africa" />
 		<property name="rank" value="3" />
@@ -25,21 +25,16 @@
 
 
 
-	<bean id="batsman" class="cricket.Batsman" autowire="byType">
-
-		<constructor-arg name="batsmanName" value="none" />
-		<constructor-arg name="runs" value="0" />
-		<constructor-arg name="average" value="0.0" />
+	<bean id="batsman" class="cricket.Batsman" autowire="byName">
 
 		<property name="batsmanName" value="Dhoni" />
 		<property name="runs" value="16000" />
 		<property name="average" value="99.9" />
 
-
 	</bean>
 
 
-	<bean id="bowler" class="cricket.Bowler" autowire="byType">
+	<bean id="bowler" class="cricket.Bowler" autowire="byName">
 
 		<constructor-arg name="bowlerName" value="none" />
 		<constructor-arg name="wickets" value="0" />
