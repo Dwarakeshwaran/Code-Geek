@@ -1,7 +1,7 @@
 package thondu;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import thondu.aambalathondu.Dinesh;
 import thondu.aambalathondu.Naveen;
@@ -10,7 +10,7 @@ public class Thondu {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext container = new ClassPathXmlApplicationContext("thondubeans.xml");
+		ApplicationContext container = new AnnotationConfigApplicationContext(ThonduConfiguration.class);
 
 		Naveen naveen = container.getBean("naveen", Naveen.class);
 		
@@ -26,7 +26,7 @@ public class Thondu {
 		dinesh.getThonduInfo();
 		dinesh.getBaeInfo();
 		
-		((ClassPathXmlApplicationContext)container).close();
+		((AnnotationConfigApplicationContext)container).close();
 	}
 
 }
