@@ -1,28 +1,22 @@
 package flames.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.XmlWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
-public class FlamesConfiguration implements WebApplicationInitializer{
-
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		System.out.println("Started");
+@Configuration
+@ComponentScan(basePackages = "flames.controllers")
+public class FlamesConfiguration {
+	
+	@Bean
+	public InternalResourceViewResolver view() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		
-		XmlWebApplicationContext webAppContainer = new XmlWebApplicationContext();
-		webAppContainer.setConfigLocation("classpath:flames-servlet.xml");
+		resolver.setPrefix("/WEB-INF/view/");
+		resolver.setSuffix(".jsp");
 		
-		
-		DispatcherServlet dServlet = new DispatcherServlet(webAppContainer);
-		
-		ServletRegistration.Dynamic customServlet = servletContext.addServlet("flamesServlet", dServlet);
-		
-		customServlet.setLoadOnStartup(1);
-		customServlet.addMapping("/home/*");
+		return resolver;
 	}
 
 }

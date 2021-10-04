@@ -13,5 +13,10 @@ public class SampleController {
 	public String test() {
 		return "Its time to do FLAMES!!!!";
 	}
+	
+	@RequestMapping("/home")
+	public String home() {
+		return "home";
+	}
 
 }
