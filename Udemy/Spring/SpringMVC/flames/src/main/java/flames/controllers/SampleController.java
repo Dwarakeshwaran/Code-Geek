@@ -1,22 +1,32 @@
 package flames.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import java.sql.SQLException;
 
-@Controller
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import flames.config.FlamesDBConfiguration;
+
+@RestController
 public class SampleController {
-	
-	
+
+	@Autowired
+	private FlamesDBConfiguration dbConfig;
+
 	@ResponseBody
 	@RequestMapping("/test")
 	public String test() {
 		return "Its time to do FLAMES!!!!";
 	}
-	
-	@RequestMapping("/home")
-	public String home() {
-		return "home";
+
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, value = "/addpair")
+	public String addPairs() throws ClassNotFoundException, SQLException {
+		dbConfig.addPairsToDB("Kamal", "Gowthami");
+		return "Pairs Added";
 	}
 
 }
