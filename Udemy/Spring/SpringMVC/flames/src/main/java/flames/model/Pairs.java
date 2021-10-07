@@ -8,6 +8,16 @@ public class Pairs {
 	private String userName;
 	private String crushName;
 
+	public Pairs() {
+		super();
+	}
+
+	public Pairs(String userName, String crushName) {
+		super();
+		this.userName = userName;
+		this.crushName = crushName;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

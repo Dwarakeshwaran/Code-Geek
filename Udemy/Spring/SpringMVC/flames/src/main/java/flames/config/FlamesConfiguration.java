@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScans(value = { @ComponentScan(basePackages = "flames.controllers"),
-		@ComponentScan(basePackages = "flames.config"),
-		@ComponentScan(basePackages = "flames.model")})
+		@ComponentScan(basePackages = "flames.config"), @ComponentScan(basePackages = "flames.model") })
 public class FlamesConfiguration {
 
 }
