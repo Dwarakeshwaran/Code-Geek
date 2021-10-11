@@ -35,7 +35,7 @@ public class SampleController {
 		return "Its time to do FLAMES!!!!";
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/addpair", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, value = "/addpair", consumes = MediaType.ALL_VALUE)
 	public void addPairs(@RequestBody String json)
 			throws ClassNotFoundException, SQLException, JsonMappingException, JsonProcessingException {
 

@@ -1,0 +1,28 @@
+<h1>{{heading}}</h1> <hr />
+
+<div class="names">
+
+    <label for="uName">Your Name: </label>
+    <input id="uName" type="text" name="user" #userName><br /><br />
+    
+    <label for="cName">Crush Name: </label>
+    <input id="cName" type="text" name="crush" #crushName><br /><br />
+  
+    <button (click) = "postName(userName.value, crushName.value)">Post</button><br /><br />
+
+    <table align="center">
+      <tr>
+
+        <td><h2 *ngFor = "let name of names"> {{name.userName}} </h2></td>
+        <td><h2 *ngFor = "let name of names"> {{name.crushName}} </h2></td>
+
+      </tr>
+
+
+    </table>
+
+    
+    
+  
+  </div>
+  
