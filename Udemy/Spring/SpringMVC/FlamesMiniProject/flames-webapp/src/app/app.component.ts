@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flames-webapp';
+
+  heading: string = 'Have fun with Flames';
   
 
   

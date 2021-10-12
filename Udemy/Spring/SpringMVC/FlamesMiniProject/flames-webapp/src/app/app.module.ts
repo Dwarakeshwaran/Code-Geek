@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NamePageComponent } from './name-page/name-page.component';
 
 import { NamePageService } from './config/name-page.service';
+import { DisplayPageComponent } from './display-page/display-page.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NamePageComponent
+    NamePageComponent,
+    DisplayPageComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NamePageService } from '../config/name-page.service';
 import { Partners } from '../config/Partners';
- 
+
 @Component({
   selector: 'app-name-page',
   templateUrl: './name-page.component.html',
@@ -10,51 +10,39 @@ import { Partners } from '../config/Partners';
 })
 export class NamePageComponent implements OnInit {
 
-  constructor(private service: NamePageService ) { }
+  constructor(private service: NamePageService) { }
 
-  names:Partners[];
+  names: Partners[];
   partnerName: Partners = null;
-
- 
 
   ngOnInit() {
 
-    this.service.getPartners()
-    .subscribe(data => {this.names = data});
-
   }
 
-  heading: string = 'Have fun with Flames';
+  postName(userName: string, crushName: string) {
 
-  message: string = "";
+    if (userName == "" || crushName == "") {
+      alert("One of the fiels is null");
+      return;
+    }
+    else {
+      console.log("clicked");
 
-  i:number = 0;
+      var name: Partners = new Partners();
 
-  check() {
-    console.log("Clicked!");
-    
-    this.i = this.i + 1;
+      name.userName = userName;
+      name.crushName = crushName;
+
+      console.log(name);
+
+      this.service.postPartner(name)
+        .subscribe(data => { this.partnerName = name });
+
+      alert(name.userName + " and his crush " + name.crushName
+        + " has been added");
+
+    }
+
   }
-
-  getVal():number{
-    return 1;
-
-  }
-
-  postName(userName: string, crushName: string){
-
-    console.log("clicked");
-
-    var name:Partners = new Partners();
-  
-    name.userName = userName;
-    name.crushName = crushName;
-
-    console.log(name);
-
-    this.service.postPartner(name)
-    .subscribe(data => {this.names.push(data)});
-  }
-  
 
 }
