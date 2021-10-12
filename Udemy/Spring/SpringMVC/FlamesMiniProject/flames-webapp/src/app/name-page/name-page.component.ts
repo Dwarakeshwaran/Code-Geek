@@ -14,7 +14,9 @@ export class NamePageComponent implements OnInit {
 
   names: Partners[];
   partnerName: Partners = null;
+  flames:String = null;
 
+  flamesPartner: Partners = null;
   ngOnInit() {
 
   }
@@ -40,6 +42,12 @@ export class NamePageComponent implements OnInit {
 
       alert(name.userName + " and his crush " + name.crushName
         + " has been added");
+
+       this.service.getFlames(name.userName, name.crushName)
+       .subscribe(data => this.flamesPartner = data);
+
+       console.log(this.flamesPartner);
+        
 
     }
 

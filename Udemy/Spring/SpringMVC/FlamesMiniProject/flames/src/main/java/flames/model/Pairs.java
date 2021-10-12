@@ -5,17 +5,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class Pairs {
 
+	private int id;
 	private String userName;
 	private String crushName;
+	private String flames;
 
 	public Pairs() {
 		super();
 	}
 
-	public Pairs(String userName, String crushName) {
+	public Pairs(int id, String userName, String crushName, String flames) {
 		super();
+		this.id = id;
 		this.userName = userName;
 		this.crushName = crushName;
+		this.flames = flames;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUserName() {
@@ -32,6 +44,14 @@ public class Pairs {
 
 	public void setCrushName(String crushName) {
 		this.crushName = crushName;
+	}
+
+	public String getFlames() {
+		return flames;
+	}
+
+	public void setFlames(String flames) {
+		this.flames = flames;
 	}
 
 }
