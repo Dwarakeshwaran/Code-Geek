@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { NamePageComponent } from './name-page/name-page.component';
 
 import { NamePageService } from './config/name-page.service';
+import { LoginPageService } from './config/login-page.service';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 
@@ -15,7 +18,9 @@ import { DisplayPageComponent } from './display-page/display-page.component';
   declarations: [
     AppComponent,
     NamePageComponent,
-    DisplayPageComponent
+    DisplayPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import { DisplayPageComponent } from './display-page/display-page.component';
     HttpClientJsonpModule
 
   ],
-  providers: [NamePageService],
+  providers: [NamePageService, LoginPageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
