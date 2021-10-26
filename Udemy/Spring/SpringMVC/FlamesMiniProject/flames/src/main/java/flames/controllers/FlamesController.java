@@ -22,7 +22,7 @@ import flames.config.FlamesDBConfiguration;
 import flames.model.Pairs;
 
 @RestController
-public class SampleController {
+public class FlamesController {
 
 	@Autowired
 	private FlamesDBConfiguration dbConfig;
