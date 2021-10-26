@@ -1,0 +1,17 @@
+<div class="registerBox">
+
+    <label for="user">User Name: </label>
+    <input id="user" placeholder="Enter User Name..." #username> <br  /> <br  />
+
+    <label for="pass1">Password: </label>
+    <input id="pass1" placeholder="Enter User Name..." #password> <br  /> <br  />
+
+    <label for="pass2">Confirm Password: </label>
+    <input id="pass2" placeholder="Enter User Name..." #confirmPassword> <br  /> <br  />
+
+    <label for="pass2">Email ID: </label>
+    <input id="email" placeholder="Enter User Name..." #email> <br  /> <br  />
+
+    <button (click) = "registerUser(username.value, password.value, confirmPassword.value, email.value)">Register</button>
+
+</div>
