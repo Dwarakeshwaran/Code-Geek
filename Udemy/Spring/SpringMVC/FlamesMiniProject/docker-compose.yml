@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  flames-mysql:
+    image: dwarki/flames-dbserver
+    container_name: flames-dbserver
+    volumes:
+      - flames:/var/lib/mysql
+  flames-angular:
+    image: dwarki/flames-angularserver
+    ports:
+      - 80:80
+  flames-spring:
+    image: dwarki/flames-springserver
+    ports:
+      - 8080:8080
+    links:
+      - flames-mysql
+volumes:
+  flames:
