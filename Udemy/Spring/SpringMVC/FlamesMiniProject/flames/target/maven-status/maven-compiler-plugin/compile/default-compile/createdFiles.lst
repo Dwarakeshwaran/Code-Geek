@@ -1,0 +1,9 @@
+flames\config\FlamesDBConfiguration.class
+flames\config\CorsConfiguration.class
+flames\config\FlamesConfiguration.class
+flames\model\Pairs.class
+flames\config\LoginDBConfiguration.class
+flames\model\User.class
+flames\config\FlamesInitialiser.class
+flames\controllers\FlamesController.class
+flames\controllers\LoginController.class

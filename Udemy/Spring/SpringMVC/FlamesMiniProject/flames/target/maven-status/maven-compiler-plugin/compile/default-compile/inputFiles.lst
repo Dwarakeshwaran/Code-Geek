@@ -1,5 +1,9 @@
-C:\Users\DwarakeshwaranBM\Documents\Code Geek\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\model\Pairs.java
-C:\Users\DwarakeshwaranBM\Documents\Code Geek\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\controllers\SampleController.java
-C:\Users\DwarakeshwaranBM\Documents\Code Geek\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesInitialiser.java
-C:\Users\DwarakeshwaranBM\Documents\Code Geek\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesDBConfiguration.java
-C:\Users\DwarakeshwaranBM\Documents\Code Geek\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesConfiguration.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\CorsConfiguration.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\controllers\FlamesController.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\controllers\LoginController.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\model\Pairs.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesInitialiser.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\model\User.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesConfiguration.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\FlamesDBConfiguration.java
+D:\GitHub\Code-Geek\Udemy\Spring\SpringMVC\FlamesMiniProject\flames\src\main\java\flames\config\LoginDBConfiguration.java

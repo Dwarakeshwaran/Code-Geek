@@ -15,17 +15,17 @@ import flames.model.User;
 @Component
 public class LoginDBConfiguration {
 	
-	private String url = "jdbc:h2:tcp://localhost/~/test";
-	private String user = "sa";
-	private String password = "";
+	private String url = "jdbc:mysql://flames-dbserver:3306/flames";
+	private String user = "root";
+	private String password = "root";
 	
-	private String createTable = "create table if not exists users (id int NOT NULL AUTO_INCREMENT, username varchar(255), password varchar(255), email varchar(255) );";
-	private String insertUser = "insert into users (username, password, email) values(?,?,?)";
-	private String getUsers = "select * from users";
+	private String createTable = "create table if not exists flames.users (id int NOT NULL AUTO_INCREMENT, username varchar(255), password varchar(255), email varchar(255) );";
+	private String insertUser = "insert into flames.users (username, password, email) values(?,?,?)";
+	private String getUsers = "select * from flames.users";
 	
 	public Connection createConnection() throws ClassNotFoundException, SQLException {
 		
-		Class.forName("org.h2.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		Connection connection = DriverManager.getConnection(url, user, password);
 		

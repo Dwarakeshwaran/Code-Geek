@@ -1,21 +1,12 @@
 <div class="names">
-
   <label for="uName">Your Name: </label>
-  <input id="uName" type="text" name="user" #userName><br /><br />
+  <input id="uName" type="text" name="user" #userName /><br /><br />
 
   <label for="cName">Crush Name: </label>
-  <input id="cName" type="text" name="crush" #crushName><br /><br />
+  <input id="cName" type="text" name="crush" #crushName /><br /><br />
 
-  <button (click)="postName(userName.value, crushName.value)">Post</button><br /><br />
+  <button (click)="postName(userName.value, crushName.value)">Post</button
+  ><br /><br />
 
-  <h1>{{flamesPartner.flames}}</h1>
-
-
-
-
-
-
-
-
-
+  <h1>{{ flamesPartner.flames }}</h1>
 </div>

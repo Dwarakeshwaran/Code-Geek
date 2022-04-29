@@ -15,17 +15,17 @@ import flames.model.Pairs;
 @Component
 public class FlamesDBConfiguration {
 
-	private String url = "jdbc:h2:tcp://localhost/~/test";
-	private String user = "sa";
-	private String password = "";
-	private String createTable = "create table if not exists pairs " + "(id int NOT NULL AUTO_INCREMENT, "
+	private String url = "jdbc:mysql://flames-dbserver:3306/flames";
+	private String user = "root";
+	private String password = "root";
+	private String createTable = "create table if not exists flames.pairs " + "(id int NOT NULL AUTO_INCREMENT, "
 			+ "username varchar(255), " + "crushname varchar(255)," + "flames varchar(255), PRIMARY KEY (id))";
 
-	private String insertData = "insert into pairs (username, crushname, flames) values (?,?,?)";
+	private String insertData = "insert into flames.pairs (username, crushname, flames) values (?,?,?)";
 
 	public Connection createConnection() throws ClassNotFoundException, SQLException {
 
-		Class.forName("org.h2.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		Connection connection = DriverManager.getConnection(url, user, password);
 
@@ -104,6 +104,9 @@ public class FlamesDBConfiguration {
 	}
 
 	public void closeConnection(Connection connection) throws SQLException {
+		
+		connection.setAutoCommit(false);
+		
 		connection.commit();
 		connection.close();
 	}
